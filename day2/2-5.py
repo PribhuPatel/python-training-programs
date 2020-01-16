@@ -1,12 +1,11 @@
 string = input("Enter a string =")
-newstring = input("Enter Middle String =")
+middle_string = input("Enter Middle String =")
 
-lens =int((len(string)/2))
-# print(lens)
-if len(string)%2==0:
-    string = string[0:lens] + newstring + string[lens:]
+len = int((len(string) / 2))  # Find Length of a string
+
+if len(string) % 2 == 0:  # add middle string to main string at middle index
+    string = string[0:len] + middle_string + string[len:]
 else:
-    string = string[0:lens] + newstring + string[lens+1:]
-
+    string = string[0:len] + middle_string + string[len + 1:]
 
 print(string)

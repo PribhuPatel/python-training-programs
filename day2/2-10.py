@@ -1,19 +1,32 @@
-a= int(input("Enter Number of Students="))
-l=list()
-for i in range(0,a):
-    stu=dict()
-    stu['name'] =input("Name of Student=")
-    stu['marks'] = int(input("Marks of Student="))
-    l.append(stu)
-
-newlist = sorted(l, key=lambda k: k['marks'],reverse=True)
-second_high=newlist[1]['marks']
-
-for i in range(1,len(newlist)):
-    if newlist[i]['marks']==second_high:
-        print(newlist[i])
-    if newlist[i]['marks']<second_high:
-        break
+students = []
+secondHighestMark = 0
 
 
+def find_second_highest_marks(information):
+    high = information[0][1]
+    sec_high = 0
 
+    for i, j in information:
+        if sec_high < j < high:
+            sec_high = j
+        elif high < j:
+            high = j
+    return sec_high
+
+
+try:
+    inp = int(input("Enter the number of students : "))
+    # storing data of the student
+    for i in range(inp):
+        name = input("Enter name : ")
+        marks = int(input("Enter marks : "))
+        students.append([name, marks])
+    secondHighestMark = find_second_highest_marks(students)
+
+    # printing students who got second highest marks
+    for i in students:
+        if i[1] == secondHighestMark:
+            print(i[0])
+
+except ValueError:
+    print("Enter valid information")
