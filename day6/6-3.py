@@ -1,3 +1,5 @@
+"""Use complex classes created in 'Classes' module and serialize-deserialize objects of them."""
+
 import pickle
 
 
@@ -42,7 +44,7 @@ def serializePickle(data):
         pickle.dump(data, PFile)
 
 
-def deserializePickle():
+def deserialize_Pickle():
     with open('6-3.pickle', 'rb') as PFile:
         return pickle.load(PFile)
 
@@ -57,7 +59,7 @@ try:
 
     serializePickle(third_obj)
 
-    third_pickle = deserializePickle()
+    third_pickle = deserialize_Pickle()
     third_pickle.show()
 
 except ValueError:

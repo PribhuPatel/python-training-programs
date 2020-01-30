@@ -3,7 +3,7 @@ try:
     inp = int(input("Enter any number = "))
     x = []
     for i in range(0, inp):
-        x.append(input("Enter input no. " + str(i) + " = "))
+        x.append(input(f"Enter input no. {str(i)} = "))
 
     # Print Input done by user
     for i in range(0, inp):

@@ -1,8 +1,11 @@
+"""Create a python class named Algorithms. It should have following sorting algorithms: Quick sort Bubble sort BFS (
+I/P Graph) DFS (I/P Graph) Merge Sort Create a class Sorting which should sort the list provided as input parameter
+using the algorithm which is also provided as input parameter. Create a main class which inherits the Sorting class
+and calls sort method with list and algorithm to use."""
 from collections import deque, defaultdict
-import time
 
 
-# print(time.ti)
+# Stores All 5 Algorithms
 class Algorithms:
     def quick_sort(self, l, r):
         if l == r:
@@ -26,9 +29,13 @@ class Algorithms:
 
     def bubble_sort(self):
         for i in range(0, len(self.arr)):
-            for i in range(0, len(self.arr) - i - 1):
-                if self.arr[i] > self.arr[i + 1]:
-                    self.arr[i], self.arr[i + 1] = self.arr[i + 1], self.arr[i]
+            temp = True
+            for j in range(0, len(self.arr) - i - 1):
+                if self.arr[j] > self.arr[j + 1]:
+                    temp=False
+                    self.arr[j], self.arr[j + 1] = self.arr[j + 1], self.arr[j]
+            if temp == True:
+                break
 
     def merge_sort(self, start, end):
         if start == end:
@@ -70,35 +77,26 @@ class Algorithms:
             abc = qu.popleft()
             if abc not in self.visited:
                 self.visited.append(abc)
-                for i in self.graph[abc]:
+                for i in sorted(self.graph[abc]):
                     qu.append(i)
 
 
+# Class for Sorting Task
 class Sorting(Algorithms):
     def sort(self, algorithm):
         if algorithm == 1:
-            t1=time.time()
             self.bubble_sort()
-            t2 = time.time()
-            print(t2-t1)
         elif algorithm == 2:
-            t1 = time.time()
-            print(t1)
             self.quick_sort(0, len(self.arr) - 1)
-            t2 = time.time()
-            print(t2)
-            print(t2 - t1)
         elif algorithm == 3:
-            t1 = time.time()
             self.merge_sort(0, len(self.arr) - 1)
-            t2 = time.time()
-            print(t2 - t1)
         else:
             raise Exception("Invalid Input for Sorting")
 
 
+# Class for Graph traversal Task
 class Graph(Algorithms):
-    def add_graph(self, a):
+    def add_graph(self, a):                     # Add nodes in graph dictionary
         self.graph[a[0]].append(a[1])
         self.graph[a[1]].append(a[0])
 
